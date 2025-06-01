@@ -20,7 +20,6 @@ public class TestPolymorphism {
         hayvanlar[2] = new Animal(); // Genel Animal nesnesi
 
         for (Animal hayvan : hayvanlar) {
-            System.out.print("Dizideki hayvan: ");
             hayvan.makeSound();
         }
     }

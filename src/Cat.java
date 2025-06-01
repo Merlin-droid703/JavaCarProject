@@ -1,7 +1,7 @@
 // Cat.java
-public class Cat extends Animal {
+public class Cat implements Animal {
     @Override
-    public void makeSound() {
-        System.out.println("Kedi miyavlar: Miyav!");
+    public void sound() {
+        System.out.println("Miyav");
     }
 }
