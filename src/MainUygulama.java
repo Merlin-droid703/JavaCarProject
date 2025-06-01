@@ -1,38 +1,33 @@
-// MainUygulama.java dosyası
+// MainUygulama.java
 
 public class MainUygulama {
 
     public static void main(String[] args) {
-        System.out.println("MainUygulama çalışmaya başladı...");
+        System.out.println("MainUygulama (Kalıtım Testi) çalışmaya başladı...");
         System.out.println();
 
-        // 1. Görev ve 2. Görev birleştirilmiş:
-        // Car sınıfından nesneler oluşturulurken constructor kullanılıyor.
+        // 1. Bir Car nesnesi oluştur.
+        // Bu işlem sırasında hem Vehicle hem de Car constructor'ları çalışacak.
+        Car myCar = new Car("Toyota", "Supra", 2024);
+        System.out.println();
 
-        // İlk araba nesnesini oluşturma
-        Car araba1 = new Car("Toyota", "Corolla", 2023);
+        // 2. 'speed' değerini ata (Vehicle'dan miras alınan setSpeed metodu ile).
+        System.out.println("Arabanın hızı ayarlanıyor...");
+        myCar.setSpeed(180.5);
+        System.out.println();
 
-        // İkinci araba nesnesini oluşturma
-        Car araba2 = new Car("Ford", "Mustang", 2024);
-        Car araba3 = new Car("Honda", "Civic", 2022);
+        // 3. 'speed' değerini ve diğer bilgileri ekrana yazdır.
+        System.out.println("--- 'get' Metotları ile Alınan Bilgiler ---");
+        System.out.println("Marka: " + myCar.getBrand()); // Car'a özgü
+        System.out.println("Model: " + myCar.getModel()); // Car'a özgü
+        System.out.println("Yıl: " + myCar.getYear());   // Car'a özgü
+        System.out.println("Arabanın Hızı: " + myCar.getSpeed() + " km/s"); // Vehicle'dan miras alındı
+        System.out.println();
 
-        System.out.println(); // Çıktıda boşluk bırakmak için
-
-        // Oluşturulan nesnelerin bilgilerini ekrana yazdırma
-        System.out.println("İlk Araba:");
-        araba1.displayInfo();
-
-        System.out.println(); // Çıktıda boşluk bırakmak için
-
-        System.out.println("İkinci Araba:");
-        araba2.displayInfo();
-
-        System.out.println(); // Çıktıda boşluk bırakmak için
-
-        System.out.println("Üçüncü Araba:");
-        araba3.displayInfo();
+        // Car sınıfındaki override edilmiş displayVehicleInfo metodunu çağıralım
+        myCar.displayVehicleInfo();
 
         System.out.println();
-        System.out.println("MainUygulama tamamlandı.");
+        System.out.println("MainUygulama (Kalıtım Testi) tamamlandı.");
     }
 }

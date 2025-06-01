@@ -1,48 +1,53 @@
-/*
-Konu: Class & Object
-Java'da sınıf, bir nesnenin şablonudur. Nesne ise bu şablona göre oluşturulan canlı örnektir.
+// Car.java
 
-Görev:
--   Car adında bir sınıf oluşturun.
--   Markası, modeli ve yılı gibi özellikler ekleyin.
--   main metodunda bir Car nesnesi oluşturup bilgileri ekrana yazdırın.
-*/
+public class Car extends Vehicle { // Vehicle sınıfından kalıtım alıyor
 
-// YUKARIDAKI YORUM BLOĞUNDAN SONRA SADECE BİR TANE SINIF TANIMI OLMALI
-public class Car {
+    private String brand;
+    private String model;
+    private int year;
 
-    // Özellikler (Attributes / Fields)
-    String brand;
-    String model;
-    int year;
-
-    // Kurucu Metot (Constructor)
+    // Car sınıfı için Constructor
     public Car(String brand, String model, int year) {
+        super(); // Üst sınıfın (Vehicle) constructor'ını çağırır
+        System.out.println(brand + " " + model + " için Car constructor'ı çalıştı!");
         this.brand = brand;
         this.model = model;
         this.year = year;
     }
 
-    // Bilgileri Görüntüleme Metodu
-    public void displayInfo() {
-        System.out.println("--- Araba Bilgileri ---");
+    // Car sınıfına özgü getter ve setter metotları
+    public String getBrand() {
+        return this.brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return this.model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getYear() {
+        return this.year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    // Vehicle sınıfındaki displayVehicleInfo metodunu override ediyoruz (ezme)
+    @Override
+    public void displayVehicleInfo() {
+        System.out.println("--- Araba Detayları ---");
         System.out.println("Marka: " + this.brand);
         System.out.println("Model: " + this.model);
         System.out.println("Yıl: " + this.year);
-    }
-
-    // Main Metot (Programın başlangıç noktası)
-    public static void main(String[] args) {
-        Car myCar = new Car("Toyota", "Corolla", 2023);
-        Car anotherCar = new Car("Ford", "Focus", 2022);
-
-        System.out.println("İlk Arabanın Bilgileri (Doğrudan Erişim):");
-        System.out.println("Marka: " + myCar.brand);
-        System.out.println("Model: " + myCar.model);
-        System.out.println("Yıl: " + myCar.year);
-        System.out.println();
-
-        System.out.println("İkinci Arabanın Bilgileri (Metot ile Erişim):");
-        anotherCar.displayInfo();
+        // Miras alınan getSpeed() metodunu kullanarak hızı yazdırıyoruz
+        System.out.println("Güncel Hız: " + getSpeed() + " km/s");
     }
 }
