@@ -1,21 +1,19 @@
 // Car.java
 
-public class Car extends Vehicle { // Vehicle sınıfından kalıtım alıyor
+public class Car extends Vehicle {
 
     private String brand;
     private String model;
     private int year;
 
-    // Car sınıfı için Constructor
     public Car(String brand, String model, int year) {
-        super(); // Üst sınıfın (Vehicle) constructor'ını çağırır
+        super();
         System.out.println(brand + " " + model + " için Car constructor'ı çalıştı!");
         this.brand = brand;
         this.model = model;
         this.year = year;
     }
 
-    // Car sınıfına özgü getter ve setter metotları
     public String getBrand() {
         return this.brand;
     }
@@ -40,14 +38,20 @@ public class Car extends Vehicle { // Vehicle sınıfından kalıtım alıyor
         this.year = year;
     }
 
-    // Vehicle sınıfındaki displayVehicleInfo metodunu override ediyoruz (ezme)
     @Override
     public void displayVehicleInfo() {
         System.out.println("--- Araba Detayları ---");
         System.out.println("Marka: " + this.brand);
         System.out.println("Model: " + this.model);
         System.out.println("Yıl: " + this.year);
-        // Miras alınan getSpeed() metodunu kullanarak hızı yazdırıyoruz
         System.out.println("Güncel Hız: " + getSpeed() + " km/s");
+    }
+
+    // Vehicle sınıfındaki start() metodunu override ediyoruz
+    @Override
+    public void start() {
+        System.out.println(getBrand() + " " + getModel() + " arabasının motoru çalıştırıldı. (Car start)");
+        // İsteğe bağlı: Üst sınıfın start() metodunu da çağırabiliriz:
+        // super.start(); // Bu satır "Araç motoru çalıştırıldı. (Vehicle start)" mesajını da yazdırır.
     }
 }

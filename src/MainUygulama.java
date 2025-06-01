@@ -3,31 +3,29 @@
 public class MainUygulama {
 
     public static void main(String[] args) {
-        System.out.println("MainUygulama (Kalıtım Testi) çalışmaya başladı...");
+        System.out.println("MainUygulama (Override Testi) çalışmaya başladı...");
         System.out.println();
 
-        // 1. Bir Car nesnesi oluştur.
-        // Bu işlem sırasında hem Vehicle hem de Car constructor'ları çalışacak.
+        // Bir Car nesnesi oluştur.
         Car myCar = new Car("Toyota", "Supra", 2024);
         System.out.println();
 
-        // 2. 'speed' değerini ata (Vehicle'dan miras alınan setSpeed metodu ile).
-        System.out.println("Arabanın hızı ayarlanıyor...");
-        myCar.setSpeed(180.5);
+        // Car nesnesi için start() metodunu çağır.
+        // Car sınıfındaki override edilmiş start() metodu çalışacak.
+        myCar.start();
         System.out.println();
 
-        // 3. 'speed' değerini ve diğer bilgileri ekrana yazdır.
-        System.out.println("--- 'get' Metotları ile Alınan Bilgiler ---");
-        System.out.println("Marka: " + myCar.getBrand()); // Car'a özgü
-        System.out.println("Model: " + myCar.getModel()); // Car'a özgü
-        System.out.println("Yıl: " + myCar.getYear());   // Car'a özgü
-        System.out.println("Arabanın Hızı: " + myCar.getSpeed() + " km/s"); // Vehicle'dan miras alındı
-        System.out.println();
-
-        // Car sınıfındaki override edilmiş displayVehicleInfo metodunu çağıralım
-        myCar.displayVehicleInfo();
+        myCar.setSpeed(60);
+        myCar.displayVehicleInfo(); // Diğer bilgileri de görelim
 
         System.out.println();
-        System.out.println("MainUygulama (Kalıtım Testi) tamamlandı.");
+
+        // Karşılaştırma için bir Vehicle nesnesi de oluşturabiliriz (isteğe bağlı)
+        Vehicle genericVehicle = new Vehicle();
+        genericVehicle.start(); // Bu, Vehicle sınıfındaki orijinal start() metodunu çağırır.
+
+
+        System.out.println();
+        System.out.println("MainUygulama (Override Testi) tamamlandı.");
     }
 }
